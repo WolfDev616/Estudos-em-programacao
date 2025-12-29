@@ -1,7 +1,3 @@
-
-
-
-
 // Módulo 5
 
 // Exercícios - Métodos nativos String
@@ -19,7 +15,7 @@
 
 let affirmation = "Javascript é divertido"
 
-console.log(affirmation.replace("Javascript", "JAVASCRIPT"))
+console.log(affirmation.replace("Javascript", "Javascript".toUpperCase()));
 
 
 
@@ -31,9 +27,8 @@ console.log(affirmation.replace("Javascript", "JAVASCRIPT"))
 
 let affirmation2 = "Aprendendo Javascript"
 
-let clippedWord = affirmation2.substring(0, 11);
-console.log(clippedWord)
-console.log(clippedWord.toLowerCase());
+let clippedWord = affirmation2.substring(0, 11).toLowerCase();
+console.log(clippedWord);
 
 
 
