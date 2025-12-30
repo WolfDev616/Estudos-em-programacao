@@ -108,10 +108,8 @@ extractDateInfo(dateInputNow)
 // idade com base na data atual. Exiba a idade no console.
 // Exemplo Entrada: 1990-05-15
 // Exemplo Saída: Idade: 34
-// Desafio: Crie uma função que receba uma data e a formate no padrão brasileiro (dia/mês/ano).
-// Exiba o resultado no console.
-// Exemplo Entrada: 2024-10-07
-// Exemplo Saída: Data formatada no padrão brasileiro: 07/10/2024
+
+
 
 const birthDate = new Date("1998/01/13");
 const currentDate = new Date();
@@ -128,3 +126,24 @@ function calculateAge(birthDate, currentDate) {
 }
 
 calculateAge(birthDate, currentDate);
+
+// Desafio: Crie uma função que receba uma data e a formate no padrão brasileiro (dia/mês/ano).
+// Exiba o resultado no console.
+// Exemplo Entrada: 2024-10-07
+// Exemplo Saída: Data formatada no padrão brasileiro: 07/10/2024
+
+const doomsdayDate = new Date('2026-01-13T19:00:00');
+
+
+function formatDateToSPTimeZone(date) {
+    let doomsdayDateYear = date.getFullYear();
+    let doomsdayDateMonth = date.getMonth();
+    let doomsdayDateDay = date.getDate();
+
+    console.log(`Esta data em formato brasileiro é ${doomsdayDateDay}/${doomsdayDateMonth + 1}/${doomsdayDateYear}.`)
+    
+
+}
+
+formatDateToSPTimeZone(doomsdayDate);
+
