@@ -15,20 +15,22 @@
 // valor total com o método calcularTotal.
 
 
-let Venda = {
+const Venda = {
     produto: "guitarra",
     quantidade: 0,
     precoUnitario: 890.00,
     desconto: 0,
     quantidadeEstoque: 23,
-
+    verificarDesconto,
 
     atualizarQuantidade: function(b) {
         this.quantidade = b
+        return
     },
 
     aplicarDesconto: function(a) {
         this.desconto = a;
+        return this.desconto;
     },
 
     calcularTotal: function() {
@@ -46,15 +48,16 @@ let Venda = {
         else {
             console.log(`É necessário ajustar o estoque, o cliente solicitou ${this.quantidade} e há ${this.quantidadeEstoque} em estoque`)
         }
+        return
     }
 }
 
 
-Venda.verificarEstoque();
-Venda.atualizarQuantidade(5);
-Venda.aplicarDesconto(0.22);
-console.log(Venda.calcularTotal());
-console.log(Venda.detalharVenda());
+// Venda.verificarEstoque();
+// Venda.atualizarQuantidade(5);
+// Venda.aplicarDesconto(0.22);
+// console.log(Venda.calcularTotal());
+// console.log(Venda.detalharVenda());
 
 
 
@@ -72,7 +75,7 @@ console.log(Venda.detalharVenda());
 const dadosVenda = Object.entries(Venda)
     .filter(([_, valor]) => typeof valor !== "function");
 
-console.log(dadosVenda)
+// console.log(dadosVenda)
 
 // Exercício 6: Obtenha um array com os nomes de todas as propriedades do objeto Venda.
 // Exiba as propriedades do objeto.
@@ -80,7 +83,7 @@ console.log(dadosVenda)
 const dadosVendaPropriedades = Object.keys(Venda)
     .filter(chave => typeof Venda[chave] !== "function");
 
-console.log(dadosVendaPropriedades)
+// console.log(dadosVendaPropriedades)
 
 // Exercício 7: Obtenha um array com todos os valores das propriedades do objeto Venda.
 // Exiba os valores das propriedades.
@@ -88,38 +91,40 @@ console.log(dadosVendaPropriedades)
 const dadosVendaValores = Object.values(Venda)
     .filter(valor => typeof valor !== "function");
 
-console.log(dadosVendaValores)
+// console.log(dadosVendaValores)
 
 // Exercício 8: Verifique se o objeto Venda possui a propriedade desconto. Retorne a
 // verificação diretamente em uma mensagem fixa.
 
 function verificarDesconto() {
-    if (Venda.desconto !== 0) {
-        console.log(`Há um desconto de ${Venda.desconto * 100}%`)
+    if (this.desconto !== 0) {
+        console.log(`Há um desconto de ${this.desconto * 100}%`)
     }
     else {
         console.log(`Não há desconto para este item`)
     }
+    return this.desconto;
 }
 
-verificarDesconto();
+// verificarDesconto();
 
 // Exercício 9: Crie um novo objeto NovaVenda que contenha as mesmas propriedades e
 // valores de Venda, mas com um produto e quantidade diferentes. Exiba o novo objeto
 // NovaVenda.
 
-let novaVenda = Object.create(Venda);
-    novaVenda.produto = "amplificador"
-    novaVenda.quantidade = 0
-    novaVenda.precoUnitario = 540.00
-    novaVenda.desconto = 0
-    novaVenda.quantidadeEstoque = 25
+const novaVenda = Object.assign({}, Venda,{
+    produto: "amplificador",
+    quantidade: 0,
+    precoUnitario: 540.00,
+    desconto: 0,
+    quantidadeEstoque: 25,
+});
 
 console.log(novaVenda)
 
-novaVenda.verificarEstoque();
 novaVenda.atualizarQuantidade(5);
-novaVenda.aplicarDesconto(0.22);
+novaVenda.verificarEstoque();
+novaVenda.verificarDesconto();
 console.log(novaVenda.calcularTotal());
 console.log(novaVenda.detalharVenda());
 
@@ -127,9 +132,12 @@ console.log(novaVenda.detalharVenda());
 // enumerável. Exiba todas as propriedades do objeto Venda e, em seguida, exiba o valor da
 // nova propriedade data separadamente.
 
-Venda.data = "29/12/2025"
+Object.defineProperty(Venda, "data", {
+    value: "30/12/2025",
+    enumerable: false,
+});
 
-console.log(Venda.data)
+console.log(`Data da venda: ${Venda.data}`)
 
 
 // Exercício 11: Crie um novo objeto DescontoEspecial que herde as propriedades do objeto
@@ -138,7 +146,6 @@ console.log(Venda.data)
 
 const DescontoEspecial = Object.create(Venda)
 DescontoEspecial.desconto = 0.2
-
 console.log(DescontoEspecial)
 DescontoEspecial.quantidade = 2
 console.log(DescontoEspecial.calcularTotal())
@@ -149,3 +156,8 @@ console.log(DescontoEspecial.detalharVenda())
 
 delete Venda.desconto;
 console.log(Venda)
+
+
+
+novaVenda.aplicarDesconto(0.3)
+console.log(novaVenda.verificarDesconto())
