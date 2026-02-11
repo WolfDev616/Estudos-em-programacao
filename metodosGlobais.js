@@ -15,8 +15,9 @@
 
 
 let number = 5.656
-console.log(Math.round(number))
-console.log(Number.parseInt(number))
+console.log(Math.round(number)); 
+console.log(Math.floor(number)); // Number(number.toFixed(2))
+console.log(Math.ceil(number)); // Number.parseInt(number)
 
 
 // Exercício 2: Crie uma função que receba uma lista de números e retorne o valor máximo e o
@@ -25,7 +26,7 @@ console.log(Number.parseInt(number))
 // Exemplo Saída: Valor mínimo: 1
 // Valor máximo: 40
 
-let numberInputs = [10, 6, 27, 69, 32, 6, 61, 9, 37, 56]
+let numberInputs = [10, 4, 27, 69, 32, 6, 61, 9, 37, 56]
 
 console.log(Math.min(...numberInputs))
 console.log(Math.max(...numberInputs))
