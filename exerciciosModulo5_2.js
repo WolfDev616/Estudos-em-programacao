@@ -14,6 +14,25 @@
 // semana. Crie um programa que calcule o valor total das vendas em uma semana.
 
 
+let totalBurgersSold 
+
+
+function totalWeeklySum() {
+    let somaTotal = 0
+    
+    
+    for (let i = 1; i < 8; i++) {
+        totalBurgersSold = Math.floor(Math.random() * 100);
+        console.log(`O total de hamburguers vendidos neste dia foi de: ${totalBurgersSold}`)
+        let a = totalBurgersSold * 10;
+        somaTotal += a;
+        console.log(`A soma semanal total foi de: ${somaTotal}`)
+    }
+        return somaTotal
+}
+
+
+totalWeeklySum()
 
 
 
@@ -24,6 +43,59 @@
 // juntamente com seus preços. Utilize um loop for para percorrer o cardápio e exibi-lo.
 
 
+let produtos = [
+
+    {nomeProduto: "espresso",
+    preco: 4.00,
+    disponibilidade: true,
+    },
+    {nomeProduto: "café com leite",
+    preco: 4.50,
+    disponibilidade: true,
+    },
+    {nomeProduto: "cappuccino",
+    preco: 6.0,
+    disponibilidade: true,
+    },
+    {nomeProduto: "leite com chocolate",
+    preco: 3.00,
+    disponibilidade: true,
+    },
+    {nomeProduto: "café gelado",
+    preco: 5.00,
+    disponibilidade: true,
+    },
+    {nomeProduto: "espresso tônica",
+    preco: 5.00,
+    disponibilidade: true,
+    },
+    {nomeProduto: "café coado",
+    preco: 2.00,
+    disponibilidade: true,
+    },
+    {nomeProduto: "frappuccino",
+    preco: 8.00,
+    disponibilidade: true,
+    },
+    {nomeProduto: "cold brew",
+    preco: 8.00,
+    disponibilidade: true,
+    }
+]
+    
+function showMenu() {
+    
+    for (let index = 0; index < produtos.length; index++) {
+        if(produtos[index].disponibilidade === true) {
+            console.log(`${produtos[index].nomeProduto.charAt(0).toUpperCase()}${produtos[index].nomeProduto.slice(1)}: R$ ${produtos[index].preco}`)
+        }
+    }
+    return
+        
+}
+
+showMenu()
+
 
 // Estrutura de Repetição - WHILE:
 
@@ -33,6 +105,7 @@
 // Você é o caixa de uma lanchonete e precisa contar o dinheiro recebido até que a última venda do dia seja
 // feita. Crie um programa que simule a contagem do dinheiro recebido a cada venda até o fechamento da
 // lanchonete.
+
 
 
 
