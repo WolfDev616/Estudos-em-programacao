@@ -18,7 +18,7 @@ let totalBurgersSold
 
 
 function totalWeeklySum() {
-    const somaTotal = 0
+    let somaTotal = 0
 
 
     for (let i = 1; i < 8; i++) {
@@ -43,7 +43,7 @@ totalWeeklySum()
 // juntamente com seus preços. Utilize um loop for para percorrer o cardápio e exibi-lo.
 
 
-let produtos = [
+const menu = [
 
     {
         nomeProduto: "espresso",
@@ -92,18 +92,18 @@ let produtos = [
     }
 ]
 
-function showMenu() {
+function showMenu(cardapio) {
 
-    for (let index = 0; index < produtos.length; index++) {
-        if (produtos[index].disponibilidade === true) {
-            console.log(`${produtos[index].nomeProduto.charAt(0).toUpperCase()}${produtos[index].nomeProduto.slice(1)}: R$ ${produtos[index].preco}`)
+    for (let index = 0; index < cardapio.length; index++) {
+        if (cardapio[index].disponibilidade === true) {
+            console.log(`${cardapio[index].nomeProduto.charAt(0).toUpperCase()}${cardapio[index].nomeProduto.slice(1)}: R$ ${cardapio[index].preco}`)
         }
     }
     return
 
 }
 
-showMenu()
+showMenu(menu)
 
 
 // Estrutura de Repetição - WHILE:
@@ -126,7 +126,7 @@ function somaVendasDia() {
         console.log(valorVenda)
         somatorioVendasDia += valorVenda;
         i--
-        console.log(`O total de vendas do dia até então foi: ${somatorioVendasDia}`)
+        console.log(`O total de vendas do dia até então foi: ${somatorioVendasDia.toFixed(2)}`)
     }
     return somatorioVendasDia
 }
@@ -140,18 +140,24 @@ somaVendasDia()
 // Você é o entregador de uma lanchonete e precisa entregar pedidos até que não haja mais pedidos
 // pendentes. Crie um programa que simule a entrega de pedidos até que não haja mais pedidos na lista.
 
-let numeroPedidos = 16
+const ordersReceived = ["Burger", "Burger + Fries", "Fries + Soda", "2 Burgers", "Chesse Pizza", "2 Pizzas, Cheese and Broccoli"];
 
-while (numeroPedidos > 0) {
-    console.log(`O pedido número ${numeroPedidos} está para ser entregue.`)
-    numeroPedidos--
+console.log(ordersReceived)
+console.log(ordersReceived.length)
+
+
+function makeDelivery(ordersReceived) {
+    let currentOrder = "";
+    console.log(`Commencing deliveries:`)
+
+    while (ordersReceived.length > 0) {
+        currentOrder = ordersReceived.shift();
+        console.log(`The order ${currentOrder} is out for delivery.`);
+    }
+    console.log(`There are no more orders.`)
 }
 
-
-
-const { read } = require("fs");
-
-
+makeDelivery(ordersReceived)
 
 // Estrutura de Repetição - DO...WHILE:
 
@@ -164,7 +170,7 @@ const { read } = require("fs");
 // tentem adivinhar o número secreto.
 
 
-// let magicalNumber = 66;
+let magicalNumber = 66;
 const readline = require("readline")
 
 const rl = readline.createInterface({
@@ -173,24 +179,32 @@ const rl = readline.createInterface({
 })
 
 
-// function findMagicalNumber() {
-//     rl.question("Digite um número:", Response => {
-//             let clientAttempt = Number(Response)
-//             if(isNaN(clientAttempt)) {
-//                 console.log(`Coloque apenas números!`)
-//             } else {
+function findMagicalNumber() {
+    rl.question("Digite um número:", Response => {
+            let clientAttempt = Number(Response)
+            if(isNaN(clientAttempt)) {
+                console.log(`Coloque apenas números!`)
+            } else {
 
-//                 console.log(`Seu numero é: ${clientAttempt}, mas não é o número mágico!`)
-//             }
-//                 if(clientAttempt !== magicalNumber) {
-//                 findMagicalNumber()
-//             } else {
-//                 console.log(`Você encontrou o número mágico! Parabéns!!! O número é ${clientAttempt}`)
-//             }
-//             rl.close})
-// }
+                console.log(`Seu numero é: ${clientAttempt}, mas não é o número mágico!`)
+            }
+                if(clientAttempt !== magicalNumber) {
+                findMagicalNumber()
+            } else {
+                console.log(`Você encontrou o número mágico! Parabéns!!! O número é ${clientAttempt}`)
+            }
+            rl.close})
+}
 
-// findMagicalNumber()
+findMagicalNumber()
+
+
+
+
+// Forma 2, de acordo com a correção:
+
+
+
 
 // Exercício 6: Gerenciamento de Estoque de Itens em Falta
 
@@ -241,19 +255,21 @@ let listaProdutos = [
     }
 ]
 
-console.log(listaProdutos.length)
 
 function adicionarItens() {
     let i = 0
 
 
     do {
-        console.log(`A quantidade em estoque de ${listaProdutos[i].nomeItem} é ${listaProdutos[i].quantidadeEstoque}`)
-        if (listaProdutos[i].quantidadeEstoque === 0) {
-            console.log(`É necessário adicionar mais itens.`)
+        if (listaProdutos[i].quantidadeEstoque !== 0) {
+            console.log(`A quantidade em estoque de ${listaProdutos[i].nomeItem} é ${listaProdutos[i].quantidadeEstoque}`)
+        } else {
+            console.log(`A quantidade em estoque de ${listaProdutos[i].nomeItem} é ${listaProdutos[i].quantidadeEstoque}`)
+
+            listaProdutos[i].quantidadeEstoque += 5
+            console.log(`Foram adicionados 5 itens. Nova quantidade: ${listaProdutos[i].quantidadeEstoque}`)
         }
         i++
-
 
     } while (i < listaProdutos.length)
 
