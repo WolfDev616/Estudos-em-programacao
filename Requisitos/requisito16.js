@@ -16,12 +16,37 @@
 
 let message = "Patrolling the Mojave almost makes you wish for a nuclear winter."
 
-function codifyMessage(message) {
-    const vowels = [
-        a = "a",
-        e = "e",
-        i = "i",
-        o = "o",
-        u = "u"
-    ]
+
+function encodeMessage(message) {
+    
+    const vowelsNewValues = {
+        a: "#",
+        e: "&",
+        i: "<",
+        o: "%",
+        u: "¬"
 }
+    
+    return encodedMessage = message.replace(/[aeiou]/g, i => vowelsNewValues[i]);
+}
+
+
+
+
+function decodeMessage(message) {
+
+    const vowels = {
+        "#": "a",
+        "&": "e",
+        "<": "i",
+        "%": "o",
+        "¬": "u"
+    }
+    
+    return decodedMessage = message.replace(/[#&<%¬]/g, i => vowels[i])
+
+}
+
+console.log(encodeMessage(message))
+
+console.log(decodeMessage(encodedMessage))
