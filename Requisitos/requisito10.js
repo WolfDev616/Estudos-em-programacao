@@ -11,12 +11,13 @@
 // Exemplo Saída: // true
 // // false
 
-const wordString = "arara"
+const wordString = "Ana"
 
 function checkpalindromeWord(word) {
     let isPalindrome = false;
-    let reversedWordString = word.split('').reverse().join('');
-    if (word === reversedWordString) {
+    let lowerCaseWord = word.toLowerCase();
+    let reversedWordString = lowerCaseWord.split('').reverse().join('');
+    if (lowerCaseWord === reversedWordString) {
         return isPalindrome = true
     } else {
         return isPalindrome = false
