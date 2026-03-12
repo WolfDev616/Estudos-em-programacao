@@ -23,12 +23,24 @@ let personalExpenses = {
 function sumAllExpenses(list) {
     let totalExpense = 0
 
-    for (i = 0; i < list.length; i++) {
-        console.log(Object.values[i])
+    for (i in list) {
+        totalExpense += list[i]
     }
-    
-    console.log(totalExpense)
-    return totalExpense
+
+    if (totalExpense <= 2200) {
+        message = "Your month was good"
+    } else if (2200 <= totalExpense <= 3000) {
+        message = "Be careful with your expenses!"
+    } else {
+        message = "You're spending too much!"
+    }
+        
+    return console.log(`Your total expenses this month is: U$${totalExpense}. ${message}`)
+
+
 }
 
 sumAllExpenses(personalExpenses)
+
+
+console.log(personalExpenses)
