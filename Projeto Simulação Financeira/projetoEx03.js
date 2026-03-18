@@ -44,7 +44,7 @@ function showCurrentMonth(months) {
     const currentMonth = date.getMonth();
 
     while (currentMonth) {
-        console.log(`The current month is ${months[currentMonth]}.`)
+        console.log(`The current month is ${months[currentMonth + 1]}.`)
         break
     }
 }
