@@ -59,7 +59,7 @@ function simulateInvestmentByTime(investment, monthlyYield, time) {
 
     for (i=1; i<=time; i++) {
         total += total * monthlyYield
-        console.log(`Month ${i}: Total in this investment: ${total.toFixed(2)}, Current month yield: ${monthlyYield}, Total Yield: ${(total - investment).toFixed(2)}`)
+        console.log(`Month ${i+1}: Total in this investment: ${total.toFixed(2)}, Current month yield: ${monthlyYield}, Total Yield: ${(total - investment).toFixed(2)}`)
         console.log("-".repeat(100))
     }
     console.log(` Your total investment in this title is ${total.toFixed(2)}`)
@@ -69,4 +69,4 @@ function simulateInvestmentByTime(investment, monthlyYield, time) {
 }
 
 
-simulateInvestmentByTime(investment, monthlyYield, 240)
+simulateInvestmentByTime(2500, 0.1076, 22);
